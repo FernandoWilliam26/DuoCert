@@ -2,7 +2,7 @@
 
 Este repositorio contiene el desarrollo del Trabajo de Fin de Grado (TFG) titulado "DuoCert", una solución informática diseñada para la optimización de procesos técnicos en **DuoTech Industrial Service**.
 
-## 📄 Descripción del Proyecto
+## Descripción del Proyecto
 DuoCert es una plataforma integral para la gestión de activos industriales (compresores, elevadores, cabinas de pintura...) que automatiza la generación de certificados técnicos oficiales. El sistema garantiza que los datos recogidos en campo cumplan con la normativa vigente mediante un motor de validación lógica, eliminando errores humanos y mejorando la trazabilidad legal.
 
 ## Objetivos del Trabajo
