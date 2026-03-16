@@ -2,7 +2,7 @@
 El presente Trabajo de Fin de Grado tiene como objetivo el diseño e implementación de una plataforma de software modular para la gestión de activos industriales y la automatización de certificados técnicos legales para la empresa **DuoTech Industrial Service**. Esta herramienta busca facilitar la supervisión y mantenimiento de activos críticos (como compresores, elevadores y cabinas de pintura), asegurando que cada intervención cumpla estrictamente con la normativa de seguridad industrial vigente. Mediante un motor de validación lógica y la automatización documental, la aplicación optimizará los procesos de inspección, eliminando el riesgo de errores humanos y garantizando una trazabilidad integral de los certificados emitidos ante los organismos competentes (Sommerville, 2021; ISO/IEC, 2022).
 
 # 2. Marco teórico
-En este capítulo se realiza una revisión del estado actual de las herramientas tecnológicas aplicadas a la gestión de mantenimiento asistido por ordenador (GMAO) y la digitalización de procesos legales en la industria. Se examinan las metodologías existentes para el inventariado de activos, la monitorización de parámetros técnicos y la generación de documentación técnica oficial (Dhillon, 2020; Bass et al., 2021). También se abordan los mecanismos de integridad de datos en arquitecturas web modernas y se revisan las mejores prácticas en el desarrollo de plataformas industriales destinadas a pequeñas y medianas empresas (PYMEs) del sector servicios (Percival & Gregory, 2020; Kleppmann, 2022).
+En este capítulo se realiza una revisión del estado actual de las herramientas tecnológicas aplicadas a la gestión de mantenimiento asistido por ordenador (GMAO) y la digitalización de procesos legales en la industria. Se examinan las metodologías existentes para el inventariado de activos, la monitorización de parámetros técnicos y la generación de documentación técnica oficial (Bass et al., 2021). También se abordan los mecanismos de integridad de datos en arquitecturas web modernas y se revisan las mejores prácticas en el desarrollo de plataformas industriales destinadas a pequeñas y medianas empresas (PYMEs) del sector servicios (Percival & Gregory, 2020; Kleppmann, 2022).
 
 ## 2.1. Justificación
 Las pequeñas y medianas empresas dedicadas al mantenimiento industrial a menudo enfrentan limitaciones significativas en términos de recursos para implementar sistemas de gestión avanzados, lo que las obliga a depender de procesos manuales o herramientas ofimáticas genéricas (Excel, Word) para la emisión de certificados legales. Esta dependencia aumenta la probabilidad de errores en la captura de datos técnicos y dificulta el cumplimiento riguroso de los calendarios de revisiones preventivas. Las soluciones de software corporativo (ERP) disponibles en el mercado, aunque robustas, suelen ser extremadamente costosas y carecen de la especificidad necesaria para abordar los reglamentos técnicos locales de Cantabria de manera ágil. Este panorama subraya la necesidad de desarrollar una plataforma especializada que permita la validación automática de parámetros industriales y la gestión centralizada de la maquinaria. El desarrollo de DuoCert tiene como propósito central aumentar la seguridad, la eficacia y la fiabilidad de los servicios de inspección técnica de DuoTech, optimizando la custodia documental y la respuesta ante las exigencias de la Consejería de Industria.
@@ -42,7 +42,7 @@ El TFG está estructurado en varios capítulos que abordan desde la definición 
 En este apartado se analizan las soluciones existentes en el mercado para la gestión de activos y el cumplimiento normativo industrial. 
 Entre las soluciones más destacadas se encuentran sistemas como **SAP PM o IBM Maximo**, herramientas líderes en la gestión de activos empresariales (EAM). Aunque son extremadamente potentes, su complejidad técnica y su elevado coste las hacen inaccesibles para DuoTech, además de requerir una adaptación forzada de los procesos de la empresa al software (Bass et al., 2021).
 
-Por otro lado, existen aplicaciones genéricas de gestión de mantenimiento que ofrecen interfaces sencillas, pero carecen de la profundidad técnica necesaria para la validación de reglamentos específicos de industria, delegando la responsabilidad de la veracidad legal totalmente en el operario (Dhillon, 2020).
+Por otro lado, existen aplicaciones genéricas de gestión de mantenimiento que ofrecen interfaces sencillas, pero carecen de la profundidad técnica necesaria para la validación de reglamentos específicos de industria, delegando la responsabilidad de la veracidad legal totalmente en el operario (Crespo Márquez, 2022).
 
 La tendencia actual en la **Industria 4.0** apunta hacia la integración de sistemas expertos y validación automática mediante algoritmos que aseguren la integridad de los datos críticos (Percival & Gregory, 2020). El uso de arquitecturas basadas en APIs permite que la información técnica fluya de manera segura entre el operario y la oficina central.
 
@@ -50,7 +50,7 @@ Este análisis comparativo ayuda a identificar el nicho donde se inserta **DuoCe
 
 **Referencias:**
 * Bass, L., Clements, P., & Kazman, R. (2021). *Software Architecture in Practice*. Addison-Wesley Professional.
-* Dhillon, B. S. (2020). *Computerized Maintenance Management Systems (CMMS)*. CRC Press.
+* Crespo Márquez, A. (2022). *Digital Maintenance Management: Guidance for Optimization and Continuous Improvement*. Springer. 
 * ISO/IEC. (2022). *ISO/IEC 27001:2022. Information security, cybersecurity and privacy protection*.
 * Kleppmann, M. (2022). *Designing Data-Intensive Applications*. O'Reilly Media.
 * Percival, H., & Gregory, B. (2020). *Architecture Patterns with Python*. O'Reilly Media.
@@ -71,16 +71,16 @@ Dado que DuoCert gestiona certificados con validez legal, la seguridad y la inte
     [https://www.iso.org/standard/27001]
 
 ## 3. Sistemas de Gestión de Mantenimiento (GMAO)
-La base teórica sobre la que se asienta el inventariado y el mantenimiento preventivo de máquinas (compresores, elevadores, etc.) proviene de **Dhillon (2020)**. Su estudio sobre los sistemas de gestión de mantenimiento asistido por ordenador permite estructurar la base de datos de DuoCert de forma que cada activo sea perfectamente trazable y cumpla su ciclo de vida útil.
+La base teórica sobre la que se asienta el inventariado y el mantenimiento preventivo de máquinas (compresores, elevadores, etc.) proviene de **Crespo Márquez (2022)**. Su estudio sobre los sistemas de gestión de mantenimiento asistido por ordenador permite estructurar la base de datos de DuoCert de forma que cada activo sea perfectamente trazable y cumpla su ciclo de vida útil.
 
-* **Referencia:** Dhillon, B. S. (2020). *Computerized Maintenance Management Systems (CMMS)*. CRC Press.  
-    [https://www.routledge.com/Computerized-Maintenance-Management-Systems-A-Practical-Guide/Dhillon/p/book/9781032176437]
+* **Referencia:** Crespo Márquez, A. (2022). *Digital Maintenance Management: Guidance for Optimization and Continuous Improvement*. Springer.  
+    [https://link.springer.com/book/10.1007/978-3-030-66442-8]
 
 ## 4. Arquitectura de Software y Patrones
 Para el diseño del sistema bajo una arquitectura moderna y escalable, se han utilizado tres fuentes clave que justifican el stack tecnológico seleccionado (**FastAPI, React y MongoDB**):
 
 * **Arquitectura General:** **Bass et al. (2021)** proporcionan los patrones necesarios para diseñar una plataforma web robusta.  
-    [https://www.pearson.com/en-us/subject-catalog/p/software-architecture-in-practice/P200000000494/9780136886099]
+    [https://www.informit.com/store/software-architecture-in-practice-9780136886099]
 * **Implementación en Python:** La guía de **Percival & Gregory (2020)** es la base técnica para el uso de **FastAPI**, permitiendo implementar el motor de reglas de certificación de manera desacoplada.  
     [https://www.cosmicpython.com/]
 * **Gestión de Datos (NoSQL):** El trabajo de **Kleppmann (2022)** explica cómo las bases de datos orientadas a documentos gestionan mejor la heterogeneidad de los activos industriales.  
