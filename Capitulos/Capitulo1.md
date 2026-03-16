@@ -55,3 +55,33 @@ Este análisis comparativo ayuda a identificar el nicho donde se inserta **DuoCe
 * Kleppmann, M. (2022). *Designing Data-Intensive Applications*. O'Reilly Media.
 * Percival, H., & Gregory, B. (2020). *Architecture Patterns with Python*. O'Reilly Media.
 * Sommerville, I. (2021). *Engineering Software Products*. Pearson.
+
+# Revisión Bibliográfica: Fundamentos de DuoCert
+
+## 1. Ingeniería de Software y Gestión de Productos
+Para establecer el ciclo de vida del proyecto, se ha tomado como referencia la obra de **Sommerville (2021)**. Esta fuente es fundamental para justificar el desarrollo de un "producto mínimo viable" (MVP) y el uso de metodologías ágiles, permitiendo que DuoCert evolucione de forma incremental basándose en los requisitos técnicos de DuoTech.
+
+* **Referencia:** Sommerville, I. (2021). *Engineering Software Products*. Pearson.  
+    [https://www.pearson.com/en-gb/subject-catalog/p/engineering-software-products-an-introduction-to-modern-software-engineering/P200000003291/9781292376349]
+
+## 2. Seguridad de la Información y Estándares
+Dado que DuoCert gestiona certificados con validez legal, la seguridad y la integridad de los datos son críticas. Se ha consultado el estándar **ISO/IEC 27001 (2022)** para integrar buenas prácticas de ciberseguridad, asegurando que el acceso a la plataforma y la custodia de los certificados técnicos cumplan con los niveles de protección requeridos por la industria.
+
+* **Referencia:** ISO/IEC. (2022). *ISO/IEC 27001:2022. Information security, cybersecurity and privacy protection*.  
+    [https://www.iso.org/standard/27001]
+
+## 3. Sistemas de Gestión de Mantenimiento (GMAO)
+La base teórica sobre la que se asienta el inventariado y el mantenimiento preventivo de máquinas (compresores, elevadores, etc.) proviene de **Dhillon (2020)**. Su estudio sobre los sistemas de gestión de mantenimiento asistido por ordenador permite estructurar la base de datos de DuoCert de forma que cada activo sea perfectamente trazable y cumpla su ciclo de vida útil.
+
+* **Referencia:** Dhillon, B. S. (2020). *Computerized Maintenance Management Systems (CMMS)*. CRC Press.  
+    [https://www.routledge.com/Computerized-Maintenance-Management-Systems-A-Practical-Guide/Dhillon/p/book/9781032176437]
+
+## 4. Arquitectura de Software y Patrones
+Para el diseño del sistema bajo una arquitectura moderna y escalable, se han utilizado tres fuentes clave que justifican el stack tecnológico seleccionado (**FastAPI, React y MongoDB**):
+
+* **Arquitectura General:** **Bass et al. (2021)** proporcionan los patrones necesarios para diseñar una plataforma web robusta.  
+    [https://www.pearson.com/en-us/subject-catalog/p/software-architecture-in-practice/P200000000494/9780136886099]
+* **Implementación en Python:** La guía de **Percival & Gregory (2020)** es la base técnica para el uso de **FastAPI**, permitiendo implementar el motor de reglas de certificación de manera desacoplada.  
+    [https://www.cosmicpython.com/]
+* **Gestión de Datos (NoSQL):** El trabajo de **Kleppmann (2022)** explica cómo las bases de datos orientadas a documentos gestionan mejor la heterogeneidad de los activos industriales.  
+    [https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/]
