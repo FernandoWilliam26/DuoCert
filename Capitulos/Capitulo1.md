@@ -61,7 +61,7 @@ Este análisis comparativo ayuda a identificar el nicho donde se inserta **DuoCe
 **Referencias:**
 Bass, L., Clements, P., y Kazman, R. (2021). *Software Architecture in Practice* (4ª ed.). Addison-Wesley Professional. [https://www.informit.com/store/software-architecture-in-practice-9780136886099]
 
-Crespo Márquez, A. (2022). *Digital Maintenance Management: Guidance for Optimization and Continuous Improvement*. Springer. [https://link.springer.com/book/10.1007/978-3-030-66442-8]
+Crespo Márquez, A. (2022). *Digital Maintenance Management: Guidance for Optimization and Continuous Improvement*. Springer. [https://ingeman.net/cursos/inicio/38-la-gestion-digital-del-mantenimiento-una-guia-para-la-transformacion-digital-en-el-area-del-mantenimiento.html]
 
 ISO/IEC. (2022). *ISO/IEC 27001:2022. Information security, cybersecurity and privacy protection*. International Organization for Standardization. [https://www.iso.org/standard/27001]
 
