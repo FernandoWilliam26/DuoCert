@@ -44,7 +44,7 @@ Diseñar e implementar una plataforma de software modular para la gestión de ac
 El TFG está estructurado en varios capítulos que abordan desde la definición del problema hasta la validación de la solución:
 * **Capítulo 1: Introducción y Marco Teórico.** Presenta el contexto, la problemática industrial, la justificación de la propuesta y los objetivos.
 * **Capítulo 2: Estado del Arte.** Revisión de tecnologías de mantenimiento industrial, análisis de soluciones competitivas y tendencias en digitalización 4.0.
-* **Capítulo 3: Metodología.** Descripción del proceso de desarrollo ágil, herramientas tecnológicas empleadas (Python, React, Docker) y fases de implementación.
+* **Capítulo 3: Metodología.** Descripción del proceso de desarrollo ágil, herramientas tecnológicas empleadas y fases de implementación.
 * **Capítulo 4: Desarrollo y Resultados.** Detalle técnico de la construcción del software, implementación del motor de reglas y análisis de los resultados obtenidos.
 * **Capítulo 5: Conclusiones y Trabajos Futuros.** Reflexión sobre el cumplimiento de objetivos, limitaciones del proyecto y posibles evoluciones del sistema.
 
