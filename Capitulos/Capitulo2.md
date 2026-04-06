@@ -17,25 +17,25 @@ El modelo del dominio identifica y representa los objetos y conceptos fundamenta
 ### 2.1.1 Diagramas del Modelo
 
 #### A. Análisis de Interacciones (Diagrama de Casos de Uso)
-![Diagrama de Casos de Uso](Imagenes/Diagrama_CasosDeUso_TFG.svg)
+![Diagrama de Casos de Uso](DuoCert/Imagenes/Diagrama_CasosDeUso_TFG.svg)
 
 **Descripción Técnica:**
 El diagrama de casos de uso representa las funcionalidades del sistema desde la perspectiva de los actores involucrados. Se han identificado dos perfiles principales: el **Técnico de Campo** (operativa y captura de datos) y el **Administrador** (gestión global y configuración normativa). Se destaca la relación de inclusión (*include*) entre la inspección y la validación, garantizando que el cumplimiento legal sea una condición previa para la emisión documental.
 
 #### B. Estructura de Datos y Relaciones (Diagrama de Clases)
-![Diagrama de Clases](Imagenes/Diagrama_Clases_TFG.svg)
+![Diagrama de Clases](DuoCert/Imagenes/Diagrama_Clases_TFG.svg)
 
 **Descripción Técnica:**
 Este diagrama define la arquitectura de información de DuoCert. Utiliza un enfoque de composición donde la entidad **EmpresaCliente** vincula los diversos activos industriales. El componente **MotorReglas** se presenta de forma desacoplada, permitiendo que la lógica de validación técnica evolucione independientemente de la estructura de almacenamiento de los activos.
 
 #### C. Dinámica del Sistema (Diagrama de Estados)
-![Diagrama de Estados](Imagenes/Diagrama_Estados_TFG.svg)
+![Diagrama de Estados](DuoCert/Imagenes/Diagrama_Estados_TFG.svg)
 
 **Descripción Técnica:**
 Ilustra el ciclo de vida de la certificación técnica. El flujo garantiza que un activo solo alcance el estado "Emitido" tras superar con éxito la validación normativa. Asimismo, el modelo gestiona la transición automática al estado de "Próximo Vencimiento" para disparar el sistema de alertas preventivas antes de que el certificado quede caducado.
 
 #### D. Instanciación del Modelo (Diagrama de Objetos)
-![Diagrama de Objetos](Imagenes/Diagrama_Objetos_TFG.svg)
+![Diagrama de Objetos](DuoCert/Imagenes/Diagrama_Objetos_TFG.svg)
 
 **Descripción Técnica:**
 Representa una instancia real basada en un escenario operativo de DuoTech (ejemplo: Talleres Cantabria S.A. y un compresor industrial). Valida la viabilidad del diseño al mostrar cómo los datos recogidos en campo se transforman en un objeto Certificado con un identificador único, asegurando la trazabilidad total del activo.
