@@ -41,10 +41,8 @@ El modelo lógico garantiza la integridad y trazabilidad de la información téc
 Se ha seleccionado un stack tecnológico orientado a la eficiencia y el cumplimiento de los requisitos no funcionales:
 
 * **FastAPI (Python)**: Utilizado como servidor REST para orquestar las llamadas a la lógica de negocio y servicios externos (IA, SMTP).
-* **Tipado Estático**: Implementado para mejorar la mantenibilidad y reducir errores tanto en el backend como en el frontend.
-* **MongoDB (NoSQL)**: Seleccionado para la persistencia de los modelos de activos y certificados debido a su flexibilidad de esquemas.
-* **React (Vite)**: Framework para la construcción de la interfaz de usuario (SPA) definida en las vistas.
-* **Tailwind CSS**: Framework de estilos para acelerar el diseño de interfaces responsivas y adaptadas a dispositivos móviles.
+* **MongoDB**: Seleccionado para la persistencia de los modelos de activos y certificados debido a su flexibilidad de esquemas.
+* **React**: Framework para la construcción de la interfaz de usuario (SPA) definida en las vistas.
 * **Docker**: Contenerización de la API y la base de datos para asegurar un despliegue consistente en entornos locales y de producción.
 
 ## 1.6. Diagrama de despliegue
