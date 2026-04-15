@@ -1,11 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
-from validador import validar_compresor
+from validador import MOTOR_DE_REGLAS
 
-app = FastAPI(title="DuoCert API - Motor de Reglas")
+app = FastAPI(title="DuoCert API - Sistema de Gestión Industrial")
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,32 +26,41 @@ class Activo(BaseModel):
     apto: Optional[bool] = None
     errores_validacion: Optional[List[str]] = []
 
-
 @app.get("/")
-async def inicio():
-    return {"mensaje": "API de DuoCert funcionando con Motor de Reglas"}
+async def root():
+    return {"status": "Online", "msg": "Bienvenido a la API de DuoCert"}
 
 @app.post("/activos")
 async def crear_activo(activo: Activo):
-    es_apto = True
-    errores = []
+    tipo_maquina = activo.tipo.lower()
+    validador_func = MOTOR_DE_REGLAS.get(tipo_maquina)
+    
+    if validador_func:
+        es_apto, errores = validador_func(activo.datos_tecnicos)
+    else:
+        es_apto = False
+        errores = ["Tipo de maquinaria no registrado en el motor de reglas."]
 
-    if activo.tipo.lower() == "compresor":
-        es_apto, errores = validar_compresor(activo.datos_tecnicos)
-    documento = activo.dict()
-    documento["apto"] = es_apto
-    documento["errores_validacion"] = errores
+    nuevo_documento = activo.dict()
+    nuevo_documento["apto"] = es_apto
+    nuevo_documento["errores_validacion"] = errores
 
-    nuevo_registro = await db.activos.insert_one(documento)
+    resultado = await db.activos.insert_one(nuevo_documento)
     
     return {
-        "id": str(nuevo_registro.inserted_id),
+        "id": str(resultado.inserted_id),
         "apto": es_apto,
         "errores": errores
     }
 
-@app.get("/activos", response_model=List[Activo])
-async def listar_activos():
+@app.get("/activos")
+async def obtener_activos():
+    lista_activos = []
     cursor = db.activos.find().sort("_id", -1)
-    activos = await cursor.to_list(length=100)
-    return activos
+    
+    async for documento in cursor:
+        documento["id"] = str(documento["_id"])
+        del documento["_id"]
+        lista_activos.append(documento)
+        
+    return lista_activos

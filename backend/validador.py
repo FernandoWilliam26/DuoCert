@@ -1,18 +1,30 @@
 def validar_compresor(datos: dict):
-    """
-    Reglas de ejemplo para un compresor:
-    1. La presión no puede superar los 12 bares.
-    2. El estado estructural debe ser 'Bueno'.
-    """
     errores = []
     presion = datos.get("presion", 0)
-    estado_estrucutral = datos.get("estado_estructural", "")
-
     if presion > 12:
-        errores.append("La presión excede el límite legal de 12 bares.")
-    
-    if estado_estrucutral != "Bueno":
-        errores.append("El estado estructural debe ser 'Bueno' para certificar.")
+        errores.append(f"Presión excesiva ({presion} bar). Máximo 12.")
+    return len(errores) == 0, errores
 
-    es_apto = len(errores) == 0
-    return es_apto, errores
+def validar_elevador(datos: dict):
+    errores = []
+    carga = datos.get("carga_maxima", 0)
+    frenos = datos.get("estado_frenos", "")
+    
+    if carga < 500:
+        errores.append("La carga máxima no cumple el mínimo industrial de 500kg.")
+    if frenos.lower() != "verificado":
+        errores.append("Los frenos de seguridad no han sido verificados.")
+    return len(errores) == 0, errores
+
+def validar_cabina(datos: dict):
+    errores = []
+    ventilacion = datos.get("caudal_ventilacion", 0)
+    if ventilacion < 2000:
+        errores.append("Caudal de ventilación insuficiente para cabina de pintura.")
+    return len(errores) == 0, errores
+
+MOTOR_DE_REGLAS = {
+    "compresor": validar_compresor,
+    "elevador": validar_elevador,
+    "cabina": validar_cabina
+}
