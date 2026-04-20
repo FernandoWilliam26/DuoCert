@@ -160,7 +160,7 @@ function App() {
                 flex: 2, padding: '15px', border: 'none', borderRadius: '8px', color: 'white', fontWeight: 'bold', cursor: 'pointer',
                 backgroundColor: editandoId ? COLORES.secundario : COLORES.primario
               }}>
-                {editandoId ? '💾 GUARDAR CAMBIOS' : '🚀 REGISTRAR E INSPECCIONAR'}
+                {editandoId ? '💾 GUARDAR CAMBIOS' : ' REGISTRAR E INSPECCIONAR'}
               </button>
               {editandoId && (
                 <button type="button" onClick={cancelarEdicion} style={{ flex: 1, backgroundColor: '#95a5a6', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer' }}>
