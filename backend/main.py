@@ -4,6 +4,7 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 from validador import MOTOR_DE_REGLAS
+from bson import ObjectId
 
 app = FastAPI(title="DuoCert API - Sistema de Gestión Industrial")
 
@@ -64,3 +65,28 @@ async def obtener_activos():
         lista_activos.append(documento)
         
     return lista_activos
+
+@app.put("/activos/{id}")
+async def actualizar_activo(id: str, activo: Activo):
+    tipo_maquina = activo.tipo.lower()
+    validador_func = MOTOR_DE_REGLAS.get(tipo_maquina)
+    
+    if validador_func:
+        es_apto, errores = validador_func(activo.datos_tecnicos)
+    else:
+        es_apto = False
+        errores = ["Tipo de maquinaria no registrado."]
+
+    datos_actualizados = activo.dict()
+    datos_actualizados["apto"] = es_apto
+    datos_actualizados["errores_validacion"] = errores
+
+    resultado = await db.activos.update_one(
+        {"_id": ObjectId(id)}, 
+        {"$set": datos_actualizados}
+    )
+
+    if resultado.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Activo no encontrado")
+
+    return {"status": "Actualizado correctamente", "apto": es_apto}
