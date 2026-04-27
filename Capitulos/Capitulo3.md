@@ -108,11 +108,3 @@ Configuración de Despliegue en Docker
 **Responsable**
 
 Desarrollador (DuoCert Team)
-
-Desarrollador (DuoCert Team)
-
-Desarrollador (DuoCert Team)
-
-Desarrollador (DuoCert Team)
-
-Desarrollador (DuoCert Team)
