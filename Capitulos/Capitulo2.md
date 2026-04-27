@@ -11,7 +11,7 @@ Realizamos una abstracción de la realidad del mantenimiento industrial para com
 #### A. Estructura del Dominio (Diagrama de Clases)
 Define los conceptos fundamentales y las relaciones estáticas que rigen el negocio de la certificación.
 
-![Diagrama de Clases](../../Imagenes/Diagrama_ModeloDominio.svg)
+![Diagrama de Clases](../../main/Imagenes/Diagrama_ModeloDominio.svg)
 
 **Descripción Técnica:**
 El modelo utiliza un enfoque de composición donde la entidad **Cliente** vincula los diversos activos. Se destaca el desacoplamiento del **Motor de Reglas**, lo que permite que la lógica de validación técnica evolucione independientemente de la estructura de almacenamiento de los activos.
@@ -19,7 +19,7 @@ El modelo utiliza un enfoque de composición donde la entidad **Cliente** vincul
 #### B. Instanciación del Modelo (Diagrama de Objetos)
 Representa un escenario real para validar la viabilidad del diseño (ejemplo: un compresor Atlas Copco de Talleres Cantabria S.A.).
 
-![Diagrama de Objetos](../../Imagenes/Diagrama_Objetos.svg)
+![Diagrama de Objetos](../../main/Imagenes/Diagrama_Objetos.svg)
 
 **Descripción Técnica:**
 Valida la jerarquía de datos al mostrar cómo un activo específico se vincula a una inspección concreta con valores de campo determinados, transformando datos brutos en una entidad certificable.
@@ -27,7 +27,7 @@ Valida la jerarquía de datos al mostrar cómo un activo específico se vincula 
 #### C. Dinámica del Sistema (Diagrama de Estados)
 Describe el ciclo de vida de los activos y sus certificados a lo largo del tiempo.
 
-![Diagrama de Estados](../../Imagenes/Diagrama_Estados.svg)
+![Diagrama de Estados](../../main/Imagenes/Diagrama_Estados.svg)
 
 **Descripción Técnica:**
 Garantiza que un certificado solo alcance el estado "Emitido" tras superar con éxito la validación normativa. Gestiona la transición automática al estado de "Próximo Vencimiento" para activar el sistema de alertas preventivas.
@@ -67,7 +67,7 @@ Se identifican los perfiles que interactúan con el sistema:
 1. **Técnico de Campo:** Usuario responsable de la captura de datos y generación de certificados.
 2. **Administrador:** Encargado de la gestión de activos, clientes y configuración normativa.
 
-![Diagrama de Casos de Uso](../../Imagenes/Diagrama_CDU.svg)
+![Diagrama de Casos de Uso](../../main/Imagenes/Diagrama_CDU.svg)
 
 ### 2.3.2 Priorización de Casos de Uso
 | ID | Caso de Uso | Prioridad | Justificación |
@@ -85,7 +85,7 @@ Se identifican los perfiles que interactúan con el sistema:
 4. El sistema invoca al **Motor de Reglas** para contrastar los valores.
 5. El sistema notifica el resultado de idoneidad y guarda el registro de forma inmutable.
 
-![Diagrama detalle CU01](../../Imagenes/Diagrama_Detalle_CU01.svg)
+![Diagrama detalle CU01](../../main/Imagenes/Diagrama_Detalle_CU01.svg)
 
 ### 2.3.4 Prototipado de Casos de Uso
 Se ha diseñado una interfaz de usuario tipo SPA orientada a la eficiencia en planta. El prototipo prioriza botones de gran tamaño para facilitar la interacción en el taller y una navegación simplificada que reduce la carga cognitiva del técnico durante la captura de datos definida en el **RF2**.
