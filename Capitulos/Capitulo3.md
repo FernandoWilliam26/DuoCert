@@ -12,9 +12,11 @@ Se ha definido una arquitectura basada en el patrón Modelo-Vista-Controlador (M
     
 *   **Tecnología de Base de Datos**: Se implementa una solución de persistencia utilizando **MongoDB** para soportar la heterogeneidad de los activos industriales.
     
-*   **Contenerización**: El sistema se despliega mediante **Docker** para garantizar la portabilidad y el aislamiento del entorno \[cite: 2026-03-27, 89\].
+*   **Contenerización**: El sistema se despliega mediante **Docker** para garantizar la portabilidad y el aislamiento del entorno.
     
 *   **Interfaz de Usuario**: Se emplea **React** para construir una Single Page Application (SPA) que materialice las vistas diseñadas.
+
+![Diagrama de Paquetes](../../main/Imagenes/Diagrama_MVC.svg)
     
 
 3.2. Análisis y Diseño de Casos de Uso
@@ -31,6 +33,8 @@ Se asigna una clase controladora única por cada caso de uso para manejar el con
 *   **CertificadoController**: Maneja la generación del documento PDF y la asignación del Código Seguro de Verificación (CSV).
     
 *   **InventarioController**: Gestiona la persistencia de activos y clientes en la base de datos.
+
+![Diagrama de Secuencia](../../main/Imagenes/Diagrama_Secuencia.svg)
     
 
 ### 3.2.2. Clases de Vista
@@ -50,6 +54,8 @@ Las clases se han identificado mediante el estudio del Modelo de Dominio y las d
 *   **Relaciones**: Se han establecido asociaciones y agregaciones para representar la vinculación entre Clientes y Activos.
     
 *   **Estructura de Paquetes**: El sistema se organiza en paquetes de UI, Controlers, Domain e Infrastructure para facilitar el mantenimiento y la extensibilidad.
+
+![Diagrama de ClasesDiseño](../../main/Imagenes/Diagrama_ClasesDiseño.svg)
     
 
 3.4. Estrategia de Producción de Código
