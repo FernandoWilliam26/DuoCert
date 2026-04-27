@@ -1,62 +1,91 @@
 # Capítulo 2: Análisis de Requisitos y Modelado del Dominio
 
-Este capítulo tiene como objetivo establecer una base común de entendimiento sobre las funciones que el sistema **DuoCert** debe realizar, definiendo los límites técnicos, los conceptos de negocio y los requisitos del proyecto. Se realiza una abstracción de la realidad del mantenimiento industrial y la certificación de activos para la empresa **DuoTech Industrial Service**, describiendo los elementos esenciales del dominio y especificando tanto los requisitos funcionales como los no funcionales mediante procesos de ingeniería de requisitos. 
-
-Dado que la totalidad de los roles (desarrollador, analista y diseñador) están a cargo de una única persona, se establece una metodología que garantiza la trazabilidad entre las necesidades legales de industria y la arquitectura lógica del sistema.
+Este capítulo tiene como objetivo establecer una base común de entendimiento sobre las funciones que el sistema **DuoCert** debe realizar. Se busca dirigir el desarrollo hacia la solución correcta describiendo los conceptos más importantes del contexto como objetos del dominio y los enlaces entre ellos, alcanzando un acuerdo entre los interesados (DuoTech Industrial Service) y el desarrollador sobre los límites y capacidades del sistema.
 
 ## 2.1 Modelo del Dominio
-El modelo del dominio identifica y representa los objetos y conceptos fundamentales del sistema, así como las relaciones entre ellos. En el contexto de DuoCert, se han identificado los siguientes elementos clave:
 
-* **Activo Industrial (Máquina):** Representa cada equipo técnico (elevador, compresor, cabina de pintura) con atributos como número de serie, marca, modelo, ubicación técnica y parámetros de diseño.
-* **Cliente:** La entidad propietaria de los activos, vinculada a una ubicación física y responsable legal de la maquinaria.
-* **Inspección / Mantenimiento:** El proceso técnico donde se recogen valores de campo (presiones, estados estructurales, medidas de seguridad).
-* **Motor de Reglas (Validación):** El componente lógico encargado de contrastar los datos de la inspección con los rangos permitidos por la normativa vigente.
-* **Certificado Técnico:** El documento resultante que acredita la idoneidad del activo tras una inspección exitosa.
-* **Alertas de Vencimiento:** Concepto encargado de la gestión temporal de la validez de los activos, asegurando el ciclo de mantenimiento preventivo.
+Realizamos una abstracción de la realidad del mantenimiento industrial para comprender la estructura y dinámica de la organización en la que el sistema se desarrollará.
 
 ### 2.1.1 Diagramas del Modelo
 
-#### A. Análisis de Interacciones (Diagrama de Casos de Uso)
-![Diagrama de Casos de Uso](../../main/Imagenes/Diagrama_CasosDeUso_TFG.svg)
+#### A. Estructura del Dominio (Diagrama de Clases)
+Define los conceptos fundamentales y las relaciones estáticas que rigen el negocio de la certificación.
+
+![Diagrama de Clases](../../Imagenes/Diagrama_ModeloDominio.svg)
 
 **Descripción Técnica:**
-El diagrama de casos de uso representa las funcionalidades del sistema desde la perspectiva de los actores involucrados. Se han identificado dos perfiles principales: el **Técnico de Campo** (operativa y captura de datos) y el **Administrador** (gestión global y configuración normativa). Se destaca la relación de inclusión (*include*) entre la inspección y la validación, garantizando que el cumplimiento legal sea una condición previa para la emisión documental.
+El modelo utiliza un enfoque de composición donde la entidad **Cliente** vincula los diversos activos. Se destaca el desacoplamiento del **Motor de Reglas**, lo que permite que la lógica de validación técnica evolucione independientemente de la estructura de almacenamiento de los activos.
 
-#### B. Estructura de Datos y Relaciones (Diagrama de Clases)
-![Diagrama de Clases](../../main/Imagenes/Diagrama_Clases_TFG.svg)
+#### B. Instanciación del Modelo (Diagrama de Objetos)
+Representa un escenario real para validar la viabilidad del diseño (ejemplo: un compresor Atlas Copco de Talleres Cantabria S.A.).
+
+![Diagrama de Objetos](../../Imagenes/Diagrama_Objetos.svg)
 
 **Descripción Técnica:**
-Este diagrama define la arquitectura de información de DuoCert. Utiliza un enfoque de composición donde la entidad **EmpresaCliente** vincula los diversos activos industriales. El componente **MotorReglas** se presenta de forma desacoplada, permitiendo que la lógica de validación técnica evolucione independientemente de la estructura de almacenamiento de los activos.
+Valida la jerarquía de datos al mostrar cómo un activo específico se vincula a una inspección concreta con valores de campo determinados, transformando datos brutos en una entidad certificable.
 
 #### C. Dinámica del Sistema (Diagrama de Estados)
-![Diagrama de Estados](../../main/Imagenes/Diagrama_Estados_TFG.svg)
+Describe el ciclo de vida de los activos y sus certificados a lo largo del tiempo.
+
+![Diagrama de Estados](../../Imagenes/Diagrama_Estados.svg)
 
 **Descripción Técnica:**
-Ilustra el ciclo de vida de la certificación técnica. El flujo garantiza que un activo solo alcance el estado "Emitido" tras superar con éxito la validación normativa. Asimismo, el modelo gestiona la transición automática al estado de "Próximo Vencimiento" para disparar el sistema de alertas preventivas antes de que el certificado quede caducado.
+Garantiza que un certificado solo alcance el estado "Emitido" tras superar con éxito la validación normativa. Gestiona la transición automática al estado de "Próximo Vencimiento" para activar el sistema de alertas preventivas.
 
-#### D. Instanciación del Modelo (Diagrama de Objetos)
-![Diagrama de Objetos](../../main/Imagenes/Diagrama_Objetos_TFG.svg)
+### 2.1.2 Glosario (Vocabulario Común)
+* **Activo Industrial:** Equipo técnico (elevador, compresor, cabina de pintura) sujeto a regulaciones de seguridad.
+* **Apto:** Estado legal de una máquina que cumple con todos los rangos del motor de reglas tras la inspección.
+* **CSV (Código Seguro de Verificación):** Identificador alfanumérico único para verificar la autenticidad del certificado.
+* **Dispositivo de Campo:** Terminal móvil o tablet utilizado por el técnico para la captura de datos en el taller.
+* **Estado de Vigencia:** Indicador temporal que determina si un activo puede operar legalmente.
+* **Formulario Dinámico:** Interfaz que adapta sus campos según el tipo de activo seleccionado (ej: presión en compresores).
+* **Idoneidad:** Cualidad de un activo de cumplir con los rangos técnicos permitidos por la normativa legal vigente.
+* **Inmutable:** Propiedad del registro de inspecciones pasadas que impide su modificación para garantizar la trazabilidad legal.
+* **Motor de Reglas:** Algoritmo lógico que automatiza la comparación entre valores de campo y constantes normativas.
+* **SPA (Single Page Application):** Arquitectura web que permite una navegación fluida sin recargas, necesaria para la eficiencia en el taller.
 
-**Descripción Técnica:**
-Representa una instancia real basada en un escenario operativo de DuoTech (ejemplo: Talleres Cantabria S.A. y un compresor industrial). Valida la viabilidad del diseño al mostrar cómo los datos recogidos en campo se transforman en un objeto Certificado con un identificador único, asegurando la trazabilidad total del activo.
+---
 
-## 2.2 Requisitos del Sistema
+## 2.2 Requisitos Suplementarios (No Funcionales)
 
-Para delimitar los límites de DuoCert y asegurar que la solución resuelve la problemática detectada en DuoTech Industrial Service, se han definido los siguientes requisitos técnicos:
+Especifican las propiedades del sistema y restricciones de entorno necesarias para su correcto funcionamiento:
 
-### 2.2.1 Requisitos Funcionales (RF)
+* **RNF1: Rendimiento:** El proceso de validación técnica y generación del certificado no debe superar los 3 segundos.
+* **RNF2: Plataforma y Accesibilidad:** La aplicación debe ser una solución web con diseño adaptable (responsive) para dispositivos móviles y tablets.
+* **RNF3: Seguridad:** Implementar protocolos de autenticación y autorización basados en roles (Técnico/Administrador) para asegurar la integridad de los datos.
+* **RNF4: Escalabilidad y Extensibilidad:** La arquitectura debe permitir la incorporación de nuevos tipos de maquinaria y normativas sin requerir cambios estructurales.
+* **RNF5: Confiabilidad:** Asegurar el almacenamiento íntegro de registros y firmas, garantizando la disponibilidad permanente del historial legal.
 
-* **RF1: Gestión de Activos Industriales:** El sistema debe permitir el alta, baja y modificación de máquinas, permitiendo su categorización por tipo técnico (elevadores, compresores, cabinas de pintura, etc.).
-* **RF2: Captura de Datos en Campo:** Proveer interfaces y formularios dinámicos para que el técnico introduzca los parámetros técnicos recogidos durante la revisión física.
-* **RF3: Validación Automática (Motor de Reglas):** El sistema debe validar automáticamente si los parámetros introducidos cumplen con los rangos definidos por la normativa de seguridad industrial vigente.
-* **RF4: Generación de Certificados PDF:** Generar de forma automatizada documentos oficiales de certificación en formato electrónico, siguiendo los estándares requeridos por la industria.
-* **RF5: Histórico y Trazabilidad:** Mantener un registro persistente e inmutable de todas las inspecciones pasadas asociadas a un activo para garantizar su seguimiento legal.
-* **RF6: Sistema de Notificaciones:** Emitir alertas automáticas sobre los próximos vencimientos de certificados para facilitar la planificación del mantenimiento preventivo.
+---
 
-### 2.2.2 Requisitos No Funcionales (Suplementarios)
+## 2.3 Disciplina de Requisitos
 
-* **RNF1: Rendimiento:** El proceso de validación de datos y la generación del certificado final no debe superar un tiempo de respuesta de 3 segundos.
-* **RNF2: Plataforma y Accesibilidad:** La aplicación debe ser una solución web con diseño adaptable (responsive), garantizando su correcto funcionamiento en dispositivos móviles y tablets durante las tareas en taller.
-* **RNF3: Seguridad:** El sistema debe implementar protocolos de autenticación y autorización basados en roles (Técnico/Administrador) para asegurar la integridad de los datos.
-* **RNF4: Escalabilidad de Datos:** La arquitectura de almacenamiento debe permitir la incorporación de nuevos tipos de maquinaria con atributos heterogéneos sin requerir cambios estructurales en el sistema.
-* **RNF5: Confiabilidad:** El sistema debe asegurar el almacenamiento íntegro de registros técnicos y firmas, garantizando la disponibilidad del historial de certificados en todo momento.
+A partir de la abstracción realizada, especificamos los requisitos del sistema mediante casos de uso para definir los límites de la solución.
+
+### 2.3.1 Encontrar Actores y Casos de Uso
+Se identifican los perfiles que interactúan con el sistema:
+1. **Técnico de Campo:** Usuario responsable de la captura de datos y generación de certificados.
+2. **Administrador:** Encargado de la gestión de activos, clientes y configuración normativa.
+
+![Diagrama de Casos de Uso](../../Imagenes/Diagrama_CDU.svg)
+
+### 2.3.2 Priorización de Casos de Uso
+| ID | Caso de Uso | Prioridad | Justificación |
+| :--- | :--- | :--- | :--- |
+| **CU01** | **Realizar Inspección** | **Crítica** | Núcleo del sistema; permite la captura y validación. |
+| **CU02** | **Generar Certificado** | **Crítica** | Objetivo principal para el cumplimiento legal del cliente. |
+| **CU03** | **Gestionar Inventario** | Alta | Necesario para mantener la base de datos de activos. |
+| **CU04** | **Configurar Reglas** | Alta | Permite la adaptabilidad a cambios en la normativa legal. |
+
+### 2.3.3 Detalle de Caso de Uso Principal (CU01: Realizar Inspección)
+**Flujo Principal:**
+1. El técnico selecciona el activo industrial de la lista.
+2. El sistema despliega el **Formulario Dinámico** correspondiente al tipo de activo.
+3. El técnico introduce los parámetros técnicos recogidos en la revisión física.
+4. El sistema invoca al **Motor de Reglas** para contrastar los valores.
+5. El sistema notifica el resultado de idoneidad y guarda el registro de forma inmutable.
+
+![Diagrama detalle CU01](../../Imagenes/Diagrama_Detalle_CU01.svg)
+
+### 2.3.4 Prototipado de Casos de Uso
+Se ha diseñado una interfaz de usuario tipo SPA orientada a la eficiencia en planta. El prototipo prioriza botones de gran tamaño para facilitar la interacción en el taller y una navegación simplificada que reduce la carga cognitiva del técnico durante la captura de datos definida en el **RF2**.
